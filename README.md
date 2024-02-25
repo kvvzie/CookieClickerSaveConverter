@@ -3,7 +3,7 @@ Cookie Clicker Save Converter is a tool that helps u convert ur mobile cookie cl
 
 ## work in progress 
 
-###just updated the code so it looks cleaner (the terminal not the code the code sucks)
+### just updated the code so it looks cleaner (the terminal not the code the code sucks)
 
 for now it can only decode ur save file and read some of its values rn im trying to figure out how i can use thoes values to replace some shit in a template that i created (idk if it will work but im trying my best) 
 

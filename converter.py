@@ -9,7 +9,7 @@ def decode_save_from_mobile(encoded_save):
         encoded_save += '=' * (4 - missing_padding)
     try:
         decoded_save = base64.b64decode(encoded_save, altchars=b'+/')
-        decoded_save = decoded_save.decode('utf-8', errors='replace')
+        decoded_save = decoded_save.decode('ascii', errors='replace')
         return decoded_save
     except Exception as e:
         print("An error occurred while decoding the save from the mobile version:", e)
@@ -17,7 +17,7 @@ def decode_save_from_mobile(encoded_save):
 
 def encode_save_for_pc(decoded_save):
     if decoded_save is not None:
-        encoded_save = base64.b64encode(decoded_save.encode('utf-8')).decode('ascii')
+        encoded_save = base64.b64encode(decoded_save.encode('ascii')).decode('ascii')
         return encoded_save
     else:
         return None
@@ -50,7 +50,7 @@ def find_and_display_building(decoded_save, building_name):
                         value_start_index = building_data.find(':', param_index) + 1
                         value_end_index = building_data.find(',', value_start_index) 
                         if value_end_index == -1:
-                            value_end_index = closing_brace_index  # Use closing brace index instead of last '}'
+                            value_end_index = closing_brace_index 
                         param_value = building_data[value_start_index:value_end_index]
                         param_name = '{}{}'.format(building_name, param.replace('"', ''))
                         building_data_dict[param_name] = param_value

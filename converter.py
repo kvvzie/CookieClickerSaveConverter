@@ -36,6 +36,7 @@ def find_and_display_value(decoded_save, search_string):
         print("An error occurred while decoding the save from the mobile version")
 # for buildings (idk how this works chat gtp gave me this)
 def find_and_display_building(decoded_save, building_name):
+    building_data_dict = {}
     if decoded_save is not None:
         start_index = decoded_save.find(building_name)
         if start_index != -1:
@@ -43,23 +44,25 @@ def find_and_display_building(decoded_save, building_name):
             closing_brace_index = decoded_save.find('}', opening_brace_index)
             if opening_brace_index != -1 and closing_brace_index != -1:
                 building_data = decoded_save[opening_brace_index + 1:closing_brace_index]
-                additional_text = ""
                 for param in ['"amount"', '"amountMax"', '"bought"', '"cookiesMade"']:
                     param_index = building_data.find(param)
                     if param_index != -1:
                         value_start_index = building_data.find(':', param_index) + 1
                         value_end_index = building_data.find(',', value_start_index) 
                         if value_end_index == -1:
-                            value_end_index = closing_brace_index 
+                            value_end_index = closing_brace_index  # Use closing brace index instead of last '}'
                         param_value = building_data[value_start_index:value_end_index]
-                        additional_text += "{}{}:{}, ".format(building_name, param.replace('"', ''), param_value)
-                print("Building data found for '{}': {}".format(building_name, additional_text))
+                        param_name = '{}{}'.format(building_name, param.replace('"', ''))
+                        building_data_dict[param_name] = param_value
+                        print("Building data found for '{}': {}:{}".format(building_name, param_name, param_value))
             else:
                 print("Error: No opening or closing brace found for '{}'".format(building_name))
         else:
             print("The building '{}' was not found in the decoded text".format(building_name))
     else:
         print("An error occurred while decoding the save from the mobile version.")
+    
+    return building_data_dict
 
 
 # user input for encoded mobile save
@@ -157,6 +160,8 @@ if decoded_save is not None:
         print("An error occurred while encoding the save for the PC version")
 else:
     print("An error occurred while decoding the save from the mobile version")
+
+building_data_dict = find_and_display_building(decoded_save, "Cursor")
 
 print(" ")
 input("Press Enter to exit...")

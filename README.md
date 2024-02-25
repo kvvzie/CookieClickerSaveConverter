@@ -2,7 +2,7 @@
 Cookie Clicker Save Converter is a tool that helps u convert ur mobile cookie clicker save to a PC version of it (written in phyton)
 
 ## work in progress 
-
+## there is a problem i can't input text longer than 16381 to vsc terminal while running the program and idk how to fix it 
 ### just updated the code so it looks cleaner (the terminal not the code the code sucks)
 
 for now it can only decode ur save file and read some of its values rn im trying to figure out how i can use thoes values to replace some shit in a template that i created (idk if it will work but im trying my best) 

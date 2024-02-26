@@ -112,7 +112,7 @@ def collect_data_for_encoding(decoded_save, building_name):
             closing_brace_index = decoded_save.find('}', opening_brace_index)
             if opening_brace_index != -1 and closing_brace_index != -1:
                 building_data = decoded_save[opening_brace_index + 1:closing_brace_index]
-                for param in ['"amount"', '"amountMax"', '"bought"', '"cookiesMade"']:
+                for param in ['"amount"','"amountMax"','"bought"','"cookiesMade"']:
                     param_index = building_data.find(param)
                     if param_index != -1:
                         value_start_index = building_data.find(':', param_index) + 1
@@ -120,7 +120,7 @@ def collect_data_for_encoding(decoded_save, building_name):
                         if value_end_index == -1:
                             value_end_index = closing_brace_index 
                         param_value = building_data[value_start_index:value_end_index].strip('"')
-                        save_for_encoding += param_value + ", "
+                        save_for_encoding += param_value + ","
                 save_for_encoding = save_for_encoding.rstrip(", ")  
             else:
                 print("Error: No opening or closing brace found for '{}'".format(building_name))
@@ -465,21 +465,41 @@ save_for_encoding_musicVolume = collect_data_for_strings(decoded_save, "musicVol
 save_for_encoding_cookiesSent = collect_data_for_strings(decoded_save, "cookiesSent")
 save_for_encoding_cookiesRecived = collect_data_for_strings(decoded_save, "cookiesRecived")
 
-
-
-
-
-
-
-
-
-save_for_encoding_grandma = collect_data_for_encoding(decoded_save, "Grandma")
 save_for_encoding_cursor = collect_data_for_encoding(decoded_save, "Cursor")
+save_for_encoding_grandma = collect_data_for_encoding(decoded_save, "Grandma")
+save_for_encoding_farm = collect_data_for_encoding(decoded_save, "Farm")
+save_for_encoding_mine = collect_data_for_encoding(decoded_save, "Mine")
+save_for_encoding_factory = collect_data_for_encoding(decoded_save, "Factory")
+save_for_encoding_bank = collect_data_for_encoding(decoded_save, "Bank")
+save_for_encoding_temple = collect_data_for_encoding(decoded_save, "Temple")
+save_for_encoding_wizard_tower = collect_data_for_encoding(decoded_save, "Wizard tower")
+save_for_encoding_shipment = collect_data_for_encoding(decoded_save, "Shipment")
+save_for_encoding_alchemy_lab = collect_data_for_encoding(decoded_save, "Alchemy lab")
+save_for_encoding_portal = collect_data_for_encoding(decoded_save, "Portal")
+save_for_encoding_time_machine = collect_data_for_encoding(decoded_save, "Time machine")
+save_for_encoding_antimatter_condenser = collect_data_for_encoding(decoded_save, "Antimatter condenser")
+save_for_encoding_prism = collect_data_for_encoding(decoded_save, "Prism")
+save_for_encoding_chancemaker = collect_data_for_encoding(decoded_save, "Chancemaker")
+save_for_encoding_fractal_engine = collect_data_for_encoding(decoded_save, "Fractal engine")
+save_for_encoding_javascript_console = collect_data_for_encoding(decoded_save, "Javascript console")
+save_for_encoding_idleverse = collect_data_for_encoding(decoded_save, "Idleverse")
+save_for_encoding_cortex_baker = collect_data_for_encoding(decoded_save, "Cortex baker")
+save_for_encoding_you = collect_data_for_encoding(decoded_save, "You")
+
+
+
+
+
+
+
+
+
+
+
 print(save_for_encoding_cursor, save_for_encoding_grandma)
 
 
-print("2.052||", save_for_encoding_runStart,";", save_for_encoding_time,";", save_for_encoding_gameStart,";", save_for_encoding_bakeryName,";", save_for_encoding_seed,";", save_for_encoding_youApperance1_7, "|", save_for_encoding_particles,";", save_for_encoding_numbers,";", save_for_encoding_autoSave,";", save_for_encoding_autoUpdate,";", save_for_encoding_milk,";", save_for_encoding_fancy,";", save_for_encoding_closingWarning,";", save_for_encoding_cursors,";", save_for_encoding_defocus,";", save_for_encoding_shortNumbers,";", save_for_encoding_fastNotes,";", save_for_encoding_cookiewobble,";", save_for_encoding_altFont,";", save_for_encoding_cssFilters,";", save_for_encoding_altCookieSound,";", save_for_encoding_iconCrates,";", save_for_encoding_backupWarning,";", save_for_encoding_extraButtons,";", save_for_encoding_lumpConfirmation,";", save_for_encoding_customGrandmas,";", save_for_encoding_sleepMode,";", save_for_encoding_enableColudSaving,";", save_for_encoding_sound,";", save_for_encoding_scaryStaffOn,";", save_for_encoding_fullscreen,";", save_for_encoding_screenReader,";", save_for_encoding_todo, "|", save_for_encoding_cookies,";", save_for_encoding_cookiesEarned,";", save_for_encoding_cookieClicks,";", save_for_encoding_gcClicksTotal,";", save_for_encoding_cookiesHandmade,";", save_for_encoding_gcMissed,";", save_for_encoding_bgType,";", save_for_encoding_milkType,";", save_for_encoding_cookiesForfeitedByAscending,";", save_for_encoding_elderWrath,";", save_for_encoding_pledges,";", save_for_encoding_pledgeT,";", save_for_encoding_currentlyResearching,";", save_for_encoding_researchTM,";", save_for_encoding_resets,";", save_for_encoding_gcClicks,";", save_for_encoding_cookiesSucked,";", save_for_encoding_wrinklersPopped,";", save_for_encoding_santaLevel,";", save_for_encoding_reindeerClicks,";", save_for_encoding_seasonT,";", save_for_encoding_seasonUses,";", save_for_encoding_season,";", save_for_encoding_cookiesContainedInWrinklers,";", save_for_encoding_numberOfWrinklers,";", save_for_encoding_prestigeLevel,";", save_for_encoding_heavenlyChips,";", save_for_encoding_heavenlyChipsSpent,";", save_for_encoding_cookiesReset,";", save_for_encoding_ascensionMode,";", save_for_encoding_pernamentUpgrades1,";", save_for_encoding_pernamentUpgrades2,";", save_for_encoding_pernamentUpgrades3,";", save_for_encoding_pernamentUpgrades4,";", save_for_encoding_pernamentUpgrades5,";", save_for_encoding_dragonLevel,";", save_for_encoding_dragonAura,";", save_for_encoding_dragonAura2,";", save_for_encoding_goldenCookieChimeType,";", save_for_encoding_volume,";", save_for_encoding_numberOfShinyWrinklers,";", save_for_encoding_sugarLumps,";", save_for_encoding_totalSugarLumpsMade,";", save_for_encoding_sugarLumpType,";", save_for_encoding_upgradesInVault,";", save_for_encoding_heralds,";", save_for_encoding_todo,";", save_for_encoding_todo,";", save_for_encoding_todo,";", save_for_encoding_musicVolume,";", save_for_encoding_cookiesSent,";", save_for_encoding_cookiesRecived, "|")
-final_save_for_encode = ("2.052||" +  save_for_encoding_runStart + ";" +  save_for_encoding_time + ";" +  save_for_encoding_gameStart + ";" +  save_for_encoding_bakeryName + ";" +  save_for_encoding_seed + ";" +  save_for_encoding_youApperance1_7 +  "|" +  save_for_encoding_particles + ";" +  save_for_encoding_numbers + ";" +  save_for_encoding_autoSave + ";" +  save_for_encoding_autoUpdate + ";" +  save_for_encoding_milk + ";" +  save_for_encoding_fancy + ";" +  save_for_encoding_closingWarning + ";" +  save_for_encoding_cursors + ";" +  save_for_encoding_defocus + ";" +  save_for_encoding_shortNumbers + ";" +  save_for_encoding_fastNotes + ";" +  save_for_encoding_cookiewobble + ";" +  save_for_encoding_altFont + ";" +  save_for_encoding_cssFilters + ";" +  save_for_encoding_altCookieSound + ";" +  save_for_encoding_iconCrates + ";" +  save_for_encoding_backupWarning + ";" +  save_for_encoding_extraButtons + ";" +  save_for_encoding_lumpConfirmation + ";" +  save_for_encoding_customGrandmas + ";" +  save_for_encoding_sleepMode + ";" +  save_for_encoding_enableColudSaving + ";" +  save_for_encoding_sound + ";" +  save_for_encoding_scaryStaffOn + ";" +  save_for_encoding_fullscreen + ";" +  save_for_encoding_screenReader + ";" +  save_for_encoding_todo +  "|" +  save_for_encoding_cookies + ";" +  save_for_encoding_cookiesEarned + ";" +  save_for_encoding_cookieClicks + ";" +  save_for_encoding_gcClicksTotal + ";" +  save_for_encoding_cookiesHandmade + ";" +  save_for_encoding_gcMissed + ";" +  save_for_encoding_bgType + ";" +  save_for_encoding_milkType + ";" +  save_for_encoding_cookiesForfeitedByAscending + ";" +  save_for_encoding_elderWrath + ";" +  save_for_encoding_pledges + ";" +  save_for_encoding_pledgeT + ";" +  save_for_encoding_currentlyResearching + ";" +  save_for_encoding_researchTM + ";" +  save_for_encoding_resets + ";" +  save_for_encoding_gcClicks + ";" +  save_for_encoding_cookiesSucked + ";" +  save_for_encoding_wrinklersPopped + ";" +  save_for_encoding_santaLevel + ";" +  save_for_encoding_reindeerClicks + ";" +  save_for_encoding_seasonT + ";" +  save_for_encoding_seasonUses + ";" +  save_for_encoding_season + ";" +  save_for_encoding_cookiesContainedInWrinklers + ";" +  save_for_encoding_numberOfWrinklers + ";" +  save_for_encoding_prestigeLevel + ";" +  save_for_encoding_heavenlyChips + ";" +  save_for_encoding_heavenlyChipsSpent + ";" +  save_for_encoding_cookiesReset + ";" +  save_for_encoding_ascensionMode + ";" +  save_for_encoding_pernamentUpgrades1 + ";" +  save_for_encoding_pernamentUpgrades2 + ";" +  save_for_encoding_pernamentUpgrades3 + ";" +  save_for_encoding_pernamentUpgrades4 + ";" +  save_for_encoding_pernamentUpgrades5 + ";" +  save_for_encoding_dragonLevel + ";" +  save_for_encoding_dragonAura + ";" +  save_for_encoding_dragonAura2 + ";" +  save_for_encoding_goldenCookieChimeType + ";" +  save_for_encoding_volume + ";" +  save_for_encoding_numberOfShinyWrinklers + ";" +  save_for_encoding_sugarLumps + ";" +  save_for_encoding_totalSugarLumpsMade + ";" +  save_for_encoding_sugarLumpType + ";" +  save_for_encoding_upgradesInVault + ";" +  save_for_encoding_heralds + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_musicVolume + ";" +  save_for_encoding_cookiesSent + ";" +  save_for_encoding_cookiesRecived +  "|")
+final_save_for_encode = ("2.052||" +  save_for_encoding_runStart + ";" +  save_for_encoding_time + ";" +  save_for_encoding_gameStart + ";" +  save_for_encoding_bakeryName + ";" +  save_for_encoding_seed + ";" +  save_for_encoding_youApperance1_7 +  "|" +  save_for_encoding_particles + ";" +  save_for_encoding_numbers + ";" +  save_for_encoding_autoSave + ";" +  save_for_encoding_autoUpdate + ";" +  save_for_encoding_milk + ";" +  save_for_encoding_fancy + ";" +  save_for_encoding_closingWarning + ";" +  save_for_encoding_cursors + ";" +  save_for_encoding_defocus + ";" +  save_for_encoding_shortNumbers + ";" +  save_for_encoding_fastNotes + ";" +  save_for_encoding_cookiewobble + ";" +  save_for_encoding_altFont + ";" +  save_for_encoding_cssFilters + ";" +  save_for_encoding_altCookieSound + ";" +  save_for_encoding_iconCrates + ";" +  save_for_encoding_backupWarning + ";" +  save_for_encoding_extraButtons + ";" +  save_for_encoding_lumpConfirmation + ";" +  save_for_encoding_customGrandmas + ";" +  save_for_encoding_sleepMode + ";" +  save_for_encoding_enableColudSaving + ";" +  save_for_encoding_sound + ";" +  save_for_encoding_scaryStaffOn + ";" +  save_for_encoding_fullscreen + ";" +  save_for_encoding_screenReader + ";" +  save_for_encoding_todo +  "|" +  save_for_encoding_cookies + ";" +  save_for_encoding_cookiesEarned + ";" +  save_for_encoding_cookieClicks + ";" +  save_for_encoding_gcClicksTotal + ";" +  save_for_encoding_cookiesHandmade + ";" +  save_for_encoding_gcMissed + ";" +  save_for_encoding_bgType + ";" +  save_for_encoding_milkType + ";" +  save_for_encoding_cookiesForfeitedByAscending + ";" +  save_for_encoding_elderWrath + ";" +  save_for_encoding_pledges + ";" +  save_for_encoding_pledgeT + ";" +  save_for_encoding_currentlyResearching + ";" +  save_for_encoding_researchTM + ";" +  save_for_encoding_resets + ";" +  save_for_encoding_gcClicks + ";" +  save_for_encoding_cookiesSucked + ";" +  save_for_encoding_wrinklersPopped + ";" +  save_for_encoding_santaLevel + ";" +  save_for_encoding_reindeerClicks + ";" +  save_for_encoding_seasonT + ";" +  save_for_encoding_seasonUses + ";" +  save_for_encoding_season + ";" +  save_for_encoding_cookiesContainedInWrinklers + ";" +  save_for_encoding_numberOfWrinklers + ";" +  save_for_encoding_prestigeLevel + ";" +  save_for_encoding_heavenlyChips + ";" +  save_for_encoding_heavenlyChipsSpent + ";" +  save_for_encoding_cookiesReset + ";" +  save_for_encoding_ascensionMode + ";" +  save_for_encoding_pernamentUpgrades1 + ";" +  save_for_encoding_pernamentUpgrades2 + ";" +  save_for_encoding_pernamentUpgrades3 + ";" +  save_for_encoding_pernamentUpgrades4 + ";" +  save_for_encoding_pernamentUpgrades5 + ";" +  save_for_encoding_dragonLevel + ";" +  save_for_encoding_dragonAura + ";" +  save_for_encoding_dragonAura2 + ";" +  save_for_encoding_goldenCookieChimeType + ";" +  save_for_encoding_volume + ";" +  save_for_encoding_numberOfShinyWrinklers + ";" +  save_for_encoding_sugarLumps + ";" +  save_for_encoding_totalSugarLumpsMade + ";" +  save_for_encoding_sugarLumpType + ";" +  save_for_encoding_upgradesInVault + ";" +  save_for_encoding_heralds + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_musicVolume + ";" +  save_for_encoding_cookiesSent + ";" +  save_for_encoding_cookiesRecived + ";" + "|" + save_for_encoding_cursor + ";" + save_for_encoding_grandma + ";" + save_for_encoding_farm + ";" + save_for_encoding_mine + ";" + save_for_encoding_factory + ";" + save_for_encoding_bank + ";" + save_for_encoding_temple + ";" + save_for_encoding_wizard_tower + ";" + save_for_encoding_shipment + ";" + save_for_encoding_alchemy_lab + ";" + save_for_encoding_portal + ";" + save_for_encoding_time_machine + ";" + save_for_encoding_antimatter_condenser + ";" + save_for_encoding_prism + ";" + save_for_encoding_chancemaker + ";" + save_for_encoding_fractal_engine + ";" + save_for_encoding_javascript_console + ";" + save_for_encoding_idleverse + ";" + save_for_encoding_cortex_baker + ";" + save_for_encoding_you + ";" + "|")
 print(final_save_for_encode)
 
 print(" ")

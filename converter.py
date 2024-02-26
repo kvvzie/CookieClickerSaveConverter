@@ -16,12 +16,6 @@ def decode_save_from_mobile(file_path):
         print("An error occurred while decoding the save from the mobile version:", e)
         return None
 
-def encode_save_for_pc(decoded_save):
-    if decoded_save is not None:
-        encoded_save = base64.b64encode(decoded_save.encode('ascii')).decode('ascii')
-        return encoded_save
-    else:
-        return None
 # for normal values
 def find_and_display_value(decoded_save, search_string):
     value_data_dict = {}
@@ -356,14 +350,7 @@ if decoded_save is not None:
 
 
     print(" ")
-    # encoding edited save for pc
-    encoded_save_for_pc = encode_save_for_pc(decoded_save)
-    if encoded_save_for_pc is not None:
-        print("Encoded text for the PC version:", encoded_save_for_pc)
-    else:
-        print("An error occurred while encoding the save for the PC version")
-else:
-    print("An error occurred while decoding the save from the mobile version")
+
     
     
     print("Collected values:")
@@ -501,6 +488,9 @@ print(save_for_encoding_cursor, save_for_encoding_grandma)
 
 final_save_for_encode = ("2.052||" +  save_for_encoding_runStart + ";" +  save_for_encoding_time + ";" +  save_for_encoding_gameStart + ";" +  save_for_encoding_bakeryName + ";" +  save_for_encoding_seed + ";" +  save_for_encoding_youApperance1_7 +  "|" +  save_for_encoding_particles + ";" +  save_for_encoding_numbers + ";" +  save_for_encoding_autoSave + ";" +  save_for_encoding_autoUpdate + ";" +  save_for_encoding_milk + ";" +  save_for_encoding_fancy + ";" +  save_for_encoding_closingWarning + ";" +  save_for_encoding_cursors + ";" +  save_for_encoding_defocus + ";" +  save_for_encoding_shortNumbers + ";" +  save_for_encoding_fastNotes + ";" +  save_for_encoding_cookiewobble + ";" +  save_for_encoding_altFont + ";" +  save_for_encoding_cssFilters + ";" +  save_for_encoding_altCookieSound + ";" +  save_for_encoding_iconCrates + ";" +  save_for_encoding_backupWarning + ";" +  save_for_encoding_extraButtons + ";" +  save_for_encoding_lumpConfirmation + ";" +  save_for_encoding_customGrandmas + ";" +  save_for_encoding_sleepMode + ";" +  save_for_encoding_enableColudSaving + ";" +  save_for_encoding_sound + ";" +  save_for_encoding_scaryStaffOn + ";" +  save_for_encoding_fullscreen + ";" +  save_for_encoding_screenReader + ";" +  save_for_encoding_todo +  "|" +  save_for_encoding_cookies + ";" +  save_for_encoding_cookiesEarned + ";" +  save_for_encoding_cookieClicks + ";" +  save_for_encoding_gcClicksTotal + ";" +  save_for_encoding_cookiesHandmade + ";" +  save_for_encoding_gcMissed + ";" +  save_for_encoding_bgType + ";" +  save_for_encoding_milkType + ";" +  save_for_encoding_cookiesForfeitedByAscending + ";" +  save_for_encoding_elderWrath + ";" +  save_for_encoding_pledges + ";" +  save_for_encoding_pledgeT + ";" +  save_for_encoding_currentlyResearching + ";" +  save_for_encoding_researchTM + ";" +  save_for_encoding_resets + ";" +  save_for_encoding_gcClicks + ";" +  save_for_encoding_cookiesSucked + ";" +  save_for_encoding_wrinklersPopped + ";" +  save_for_encoding_santaLevel + ";" +  save_for_encoding_reindeerClicks + ";" +  save_for_encoding_seasonT + ";" +  save_for_encoding_seasonUses + ";" +  save_for_encoding_season + ";" +  save_for_encoding_cookiesContainedInWrinklers + ";" +  save_for_encoding_numberOfWrinklers + ";" +  save_for_encoding_prestigeLevel + ";" +  save_for_encoding_heavenlyChips + ";" +  save_for_encoding_heavenlyChipsSpent + ";" +  save_for_encoding_cookiesReset + ";" +  save_for_encoding_ascensionMode + ";" +  save_for_encoding_pernamentUpgrades1 + ";" +  save_for_encoding_pernamentUpgrades2 + ";" +  save_for_encoding_pernamentUpgrades3 + ";" +  save_for_encoding_pernamentUpgrades4 + ";" +  save_for_encoding_pernamentUpgrades5 + ";" +  save_for_encoding_dragonLevel + ";" +  save_for_encoding_dragonAura + ";" +  save_for_encoding_dragonAura2 + ";" +  save_for_encoding_goldenCookieChimeType + ";" +  save_for_encoding_volume + ";" +  save_for_encoding_numberOfShinyWrinklers + ";" +  save_for_encoding_sugarLumps + ";" +  save_for_encoding_totalSugarLumpsMade + ";" +  save_for_encoding_sugarLumpType + ";" +  save_for_encoding_upgradesInVault + ";" +  save_for_encoding_heralds + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_musicVolume + ";" +  save_for_encoding_cookiesSent + ";" +  save_for_encoding_cookiesRecived + ";" + "|" + save_for_encoding_cursor + ";" + save_for_encoding_grandma + ";" + save_for_encoding_farm + ";" + save_for_encoding_mine + ";" + save_for_encoding_factory + ";" + save_for_encoding_bank + ";" + save_for_encoding_temple + ";" + save_for_encoding_wizard_tower + ";" + save_for_encoding_shipment + ";" + save_for_encoding_alchemy_lab + ";" + save_for_encoding_portal + ";" + save_for_encoding_time_machine + ";" + save_for_encoding_antimatter_condenser + ";" + save_for_encoding_prism + ";" + save_for_encoding_chancemaker + ";" + save_for_encoding_fractal_engine + ";" + save_for_encoding_javascript_console + ";" + save_for_encoding_idleverse + ";" + save_for_encoding_cortex_baker + ";" + save_for_encoding_you + ";" + "|")
 print(final_save_for_encode)
+
+encoded_final_save = base64.b64encode(final_save_for_encode.encode('ascii')).decode('ascii')
+print("Encoded final save for encoding:", encoded_final_save)
 
 print(" ")
 input("Press Enter to exit...")

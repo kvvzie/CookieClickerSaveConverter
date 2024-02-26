@@ -2,6 +2,9 @@
 ### Cookie Clicker Save Converter is a tool that helps u convert ur mobile cookie clicker save to a PC version of it (written in phyton)
 
 ## work in progress 
+![progress](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/bd0c14fb-88f2-4f6a-ab7c-851bb7eb73a2)
+
+
 ## there is still a problem with my debugger and i can't run normally my code (i con't input save file longer that 16831 characters) so i made it so u need to put ur file directory so the program can open ur save file (i know it sucks
 ### (special thanks to Violet for DashNet Forums discord server for sharing some information about variables on mobile vaersion fo the game)
 

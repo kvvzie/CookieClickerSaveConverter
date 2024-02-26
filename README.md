@@ -3,7 +3,9 @@ Cookie Clicker Save Converter is a tool that helps u convert ur mobile cookie cl
 
 ## work in progress 
 ## there is still a problem with my debugger and i can't run normally my code (i con't input save file longer that 16831 characters) so i made it so u need to put ur file directory so the program can open ur save file (i know it sucks
-### did some more values and updating the template rn (special thanks to Violet for DashNet Forums discord server)
+### (special thanks to Violet for DashNet Forums discord server)
+
+#remade 1/3 of the code idk what half of it does but it works and i don't want to touch it 
 
 for now it can only decode ur save file and read some of its values rn im trying to figure out how i can use thoes values to replace some shit in a template that i created (idk if it will work but im trying my best) 
 

@@ -6,7 +6,7 @@
 ### (special thanks to Violet for DashNet Forums discord server for sharing some information about variables on mobile vaersion fo the game)
 
 # finally started putting variables in to places they belong in to in a pc save (2 versions of it) didn't finish tho 
-![image](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/b135d450-885d-4d91-9977-89e7b7827cd9)
+# ![image](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/b135d450-885d-4d91-9977-89e7b7827cd9)
 
 # remade 1/3 of the code idk what half of it does but it works and i don't want to touch it 
 

@@ -490,7 +490,7 @@ final_save_for_encode = ("2.052||" +  save_for_encoding_runStart + ";" +  save_f
 print(final_save_for_encode)
 
 encoded_final_save = base64.b64encode(final_save_for_encode.encode('ascii')).decode('ascii')
-print("Encoded final save for encoding:", encoded_final_save)
+print("Encoded save for pc:", encoded_final_save)
 
 print(" ")
 input("Press Enter to exit...")

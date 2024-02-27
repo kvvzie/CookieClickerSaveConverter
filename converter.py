@@ -544,4 +544,4 @@ input("Press Enter to exit...")
 # to do :
 # buildnglevel buildingminigamedata buildingmuted
 # pernament upgrades function ## did it yay
-# upgrades (ask Violet for help) 
+# upgrades (ask Violet for help) ## too much to do

@@ -1,5 +1,7 @@
 # made by kvvz
 
+#most likely doesn't work
+
 import base64
 
 def decode_save_from_mobile(encoded_save):

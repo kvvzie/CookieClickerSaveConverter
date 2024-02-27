@@ -7,6 +7,7 @@
 
 ## there is still a problem with my debugger and i can't run normally my code (i con't input save file longer that 16831 characters) so i made it so u need to put ur file directory so the program can open ur save file (i know it sucks
 ### (special thanks to Violet for DashNet Forums discord server for sharing some information about variables on mobile vaersion fo the game)
+### need to work on achives, upgrades, wrinklers and figure out why do i need to ascend everytime i import my save)
 
 converted save works only afetr ascending cause stats are bugged but here is a sceenshot from pc version 
 ![image](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/0a495112-6233-478b-ad8a-bd6aff4e2952)

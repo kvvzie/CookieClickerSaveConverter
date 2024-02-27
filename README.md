@@ -10,7 +10,8 @@
 ### need to work on achives, upgrades, wrinklers and figure out why do i need to ascend everytime i import my save)
 
 converted save works only afetr ascending cause stats are bugged but here is a sceenshot from pc version 
-![image](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/0a495112-6233-478b-ad8a-bd6aff4e2952)
+![image](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/375ddcd0-6ec9-4498-b443-b0c93ce8e20f)
+
 
 
 # finally started putting variables in to places they belong in to in a pc save (2 versions of it) didn't finish tho 

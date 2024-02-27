@@ -1,7 +1,7 @@
 # CookieClickerSaveConverter
 ### Cookie Clicker Save Converter is a tool that helps u convert ur mobile cookie clicker save to a PC version of it (written in phyton)
 
-## work in progress 
+## i hate my life and my self for doin that
 ![progress](https://github.com/kvvzie/CookieClickerSaveConverter/assets/161234221/bd0c14fb-88f2-4f6a-ab7c-851bb7eb73a2)
 
 

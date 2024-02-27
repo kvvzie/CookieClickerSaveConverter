@@ -158,6 +158,8 @@ def collect_data_for_list(decoded_save, value_name):
 # collecting data for encoding
 def collect_data_for_encoding(decoded_save, building_name):
     save_for_encoding = ""
+    expected_params = ['"amount"','"bought"','"cookiesMade"','"level"','"minigameData"','"amountMax"']
+    
     if decoded_save is not None:
         start_index = decoded_save.find(building_name)
         if start_index != -1:
@@ -165,20 +167,16 @@ def collect_data_for_encoding(decoded_save, building_name):
             closing_brace_index = decoded_save.find('}', opening_brace_index)
             if opening_brace_index != -1 and closing_brace_index != -1:
                 building_data = decoded_save[opening_brace_index + 1:closing_brace_index]
-                found_params = []
-                for param in ['"amount"','"bought"','"cookiesMade"','"level"','"minigameData"','"amountMax"']:
+                for param in expected_params:
                     param_index = building_data.find(param)
                     if param_index != -1:
-                        found_params.append(param)
                         value_start_index = building_data.find(':', param_index) + 1
                         value_end_index = building_data.find(',', value_start_index) 
                         if value_end_index == -1:
                             value_end_index = closing_brace_index 
                         param_value = building_data[value_start_index:value_end_index].strip('"')
                         save_for_encoding += param_value + ","
-                save_for_encoding = save_for_encoding.rstrip(", ")  
-                if not found_params:
-                    for _ in range(len(['"amount"','"bought"','"cookiesMade"','"level"','"minigameData"','"amountMax"'])):
+                    else:
                         save_for_encoding += '0,'
                 save_for_encoding = save_for_encoding.rstrip(", ")
             else:

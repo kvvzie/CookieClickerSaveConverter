@@ -88,11 +88,51 @@ def collect_data_for_strings(decoded_save, value_name):
             
             save_for_encoding += found_value + ", "
         else:
+            found_value = '0'
+            save_for_encoding += found_value + ", "
             print("The value '{}' was not found in the decoded text".format(value_name))
     else:
         print("An error occurred while decoding the save from the mobile version.")
     
     return save_for_encoding.rstrip(", ") 
+
+def collect_data_for_settings(decoded_save, value_name):
+    save_for_encoding = ""
+    if decoded_save is not None:
+        if value_name in decoded_save:
+            start_index = decoded_save.index(value_name) + len(value_name) + 2
+            end_index = decoded_save.find(',', start_index)
+            found_value = decoded_save[start_index:end_index].strip('"{}:') 
+
+            
+            save_for_encoding += found_value + ", "
+        else:
+            found_value = '0'
+            save_for_encoding += found_value + ", "
+            print("The value '{}' was not found in the decoded text".format(value_name))
+    else:
+        print("An error occurred while decoding the save from the mobile version.")
+    
+    return save_for_encoding.rstrip(", ") 
+
+def collect_data_for_list(decoded_save, value_name):
+    save_for_encodingPer = ""
+    if decoded_save is not None:
+        if value_name in decoded_save:
+            start_index = decoded_save.index(value_name) + len(value_name) + 3 
+            end_index = decoded_save.find(']', start_index)
+            found_values = decoded_save[start_index:end_index].split(',')
+            
+            for i, val in enumerate(found_values, start=1):
+                val = val.strip(' "')
+                save_for_encodingPer += ";{}".format(val)
+            
+        else:
+            print("The value '{}' was not found in the decoded text".format(value_name))
+    else:
+        print("An error occurred while decoding the save from the mobile version.")
+    
+    return save_for_encodingPer.rstrip(", ")
 
 
 
@@ -106,9 +146,11 @@ def collect_data_for_encoding(decoded_save, building_name):
             closing_brace_index = decoded_save.find('}', opening_brace_index)
             if opening_brace_index != -1 and closing_brace_index != -1:
                 building_data = decoded_save[opening_brace_index + 1:closing_brace_index]
-                for param in ['"amount"','"amountMax"','"bought"','"cookiesMade"']:
+                found_params = []
+                for param in ['"amount"','"bought"','"cookiesMade"','"level"','"minigameData"','"amountMax"']:
                     param_index = building_data.find(param)
                     if param_index != -1:
+                        found_params.append(param)
                         value_start_index = building_data.find(':', param_index) + 1
                         value_end_index = building_data.find(',', value_start_index) 
                         if value_end_index == -1:
@@ -116,9 +158,15 @@ def collect_data_for_encoding(decoded_save, building_name):
                         param_value = building_data[value_start_index:value_end_index].strip('"')
                         save_for_encoding += param_value + ","
                 save_for_encoding = save_for_encoding.rstrip(", ")  
+                if not found_params:
+                    for _ in range(len(['"amount"','"bought"','"cookiesMade"','"level"','"minigameData"','"amountMax"'])):
+                        save_for_encoding += '0,'
+                save_for_encoding = save_for_encoding.rstrip(", ")
             else:
+                
                 print("Error: No opening or closing brace found for '{}'".format(building_name))
         else:
+            
             print("The building '{}' was not found in the decoded text".format(building_name))
     else:
         print("An error occurred while decoding the save from the mobile version.")
@@ -369,33 +417,33 @@ save_for_encoding_bakeryName = collect_data_for_strings(decoded_save, "bakeryNam
 save_for_encoding_seed = collect_data_for_strings(decoded_save, "seed")
 save_for_encoding_youApperance1_7 = collect_data_for_strings(decoded_save, "youApperance1-7")
 
-save_for_encoding_particles = collect_data_for_strings(decoded_save, "particles")
-save_for_encoding_numbers = collect_data_for_strings(decoded_save, "numbers")
-save_for_encoding_autoSave = collect_data_for_strings(decoded_save, "autoSave")
-save_for_encoding_autoUpdate = collect_data_for_strings(decoded_save, "autoUpdate")
-save_for_encoding_milk = collect_data_for_strings(decoded_save, "milk")
-save_for_encoding_fancy = collect_data_for_strings(decoded_save, "fancy")
-save_for_encoding_closingWarning = collect_data_for_strings(decoded_save, "closingWarning")
-save_for_encoding_cursors = collect_data_for_strings(decoded_save, "cursors")
-save_for_encoding_defocus = collect_data_for_strings(decoded_save, "defocus")
-save_for_encoding_shortNumbers = collect_data_for_strings(decoded_save, "shortNumbers")
-save_for_encoding_fastNotes = collect_data_for_strings(decoded_save, "fastNotes")
-save_for_encoding_cookiewobble = collect_data_for_strings(decoded_save, "cookiewobble")
-save_for_encoding_altFont = collect_data_for_strings(decoded_save, "altFont")
-save_for_encoding_cssFilters = collect_data_for_strings(decoded_save, "cssFilters")
-save_for_encoding_altCookieSound = collect_data_for_strings(decoded_save, "altCookieSound")
-save_for_encoding_iconCrates = collect_data_for_strings(decoded_save, "iconCrates")
-save_for_encoding_backupWarning = collect_data_for_strings(decoded_save, "backupWarning")
-save_for_encoding_extraButtons = collect_data_for_strings(decoded_save, "extraButtons")
-save_for_encoding_lumpConfirmation = collect_data_for_strings(decoded_save, "lumpConfirmation")
-save_for_encoding_customGrandmas = collect_data_for_strings(decoded_save, "customGrandmas")
-save_for_encoding_sleepMode = collect_data_for_strings(decoded_save, "sleepMode")
-save_for_encoding_enableColudSaving = collect_data_for_strings(decoded_save, "enableColudSaving")
-save_for_encoding_sound = collect_data_for_strings(decoded_save, "sound")
-save_for_encoding_scaryStaffOn = collect_data_for_strings(decoded_save, "scaryStaffOn")
-save_for_encoding_fullscreen = collect_data_for_strings(decoded_save, "fullscreen")
-save_for_encoding_screenReader = collect_data_for_strings(decoded_save, "screenReader")
-save_for_encoding_todo = collect_data_for_strings(decoded_save, "todo")
+save_for_encoding_particles = collect_data_for_settings(decoded_save, "particles")
+save_for_encoding_numbers = collect_data_for_settings(decoded_save, "numbers")
+save_for_encoding_autoSave = collect_data_for_settings(decoded_save, "autoSave")
+save_for_encoding_autoUpdate = collect_data_for_settings(decoded_save, "autoUpdate")
+save_for_encoding_milk = collect_data_for_settings(decoded_save, "milk")
+save_for_encoding_fancy = collect_data_for_settings(decoded_save, "fancy")
+save_for_encoding_closingWarning = collect_data_for_settings(decoded_save, "closingWarning")
+save_for_encoding_cursors = collect_data_for_settings(decoded_save, "cursors")
+save_for_encoding_defocus = collect_data_for_settings(decoded_save, "defocus")
+save_for_encoding_shortNumbers = collect_data_for_settings(decoded_save, "shortNumbers")
+save_for_encoding_fastNotes = collect_data_for_settings(decoded_save, "fastNotes")
+save_for_encoding_cookiewobble = collect_data_for_settings(decoded_save, "cookiewobble")
+save_for_encoding_altFont = collect_data_for_settings(decoded_save, "altFont")
+save_for_encoding_cssFilters = collect_data_for_settings(decoded_save, "cssFilters")
+save_for_encoding_altCookieSound = collect_data_for_settings(decoded_save, "altCookieSound")
+save_for_encoding_iconCrates = collect_data_for_settings(decoded_save, "iconCrates")
+save_for_encoding_backupWarning = collect_data_for_settings(decoded_save, "backupWarning")
+save_for_encoding_extraButtons = collect_data_for_settings(decoded_save, "extraButtons")
+save_for_encoding_lumpConfirmation = collect_data_for_settings(decoded_save, "lumpConfirmation")
+save_for_encoding_customGrandmas = collect_data_for_settings(decoded_save, "customGrandmas")
+save_for_encoding_sleepMode = collect_data_for_settings(decoded_save, "sleepMode")
+save_for_encoding_enableColudSaving = collect_data_for_settings(decoded_save, "enableColudSaving")
+save_for_encoding_sound = collect_data_for_settings(decoded_save, "sound")
+save_for_encoding_scaryStaffOn = collect_data_for_settings(decoded_save, "scaryStaffOn")
+save_for_encoding_fullscreen = collect_data_for_settings(decoded_save, "fullscreen")
+save_for_encoding_screenReader = collect_data_for_settings(decoded_save, "screenReader")
+save_for_encoding_todo = collect_data_for_settings(decoded_save, "todo")
 
 save_for_encoding_cookies = collect_data_for_strings(decoded_save, "cookies")
 save_for_encoding_cookiesEarned = collect_data_for_strings(decoded_save, "cookiesEarned")
@@ -427,11 +475,7 @@ save_for_encoding_heavenlyChips = collect_data_for_strings(decoded_save, "heaven
 save_for_encoding_heavenlyChipsSpent = collect_data_for_strings(decoded_save, "heavenlyChipsSpent")
 save_for_encoding_cookiesReset = collect_data_for_strings(decoded_save, "cookiesReset")
 save_for_encoding_ascensionMode = collect_data_for_strings(decoded_save, "ascensionMode")
-save_for_encoding_pernamentUpgrades1 = collect_data_for_strings(decoded_save, "pernamentUpgrades")
-save_for_encoding_pernamentUpgrades2 = collect_data_for_strings(decoded_save, "pernamentUpgrades")
-save_for_encoding_pernamentUpgrades3 = collect_data_for_strings(decoded_save, "pernamentUpgrades")
-save_for_encoding_pernamentUpgrades4 = collect_data_for_strings(decoded_save, "pernamentUpgrades")
-save_for_encoding_pernamentUpgrades5 = collect_data_for_strings(decoded_save, "pernamentUpgrades")
+save_for_encoding_perm_upgrades = collect_data_for_list(decoded_save, "permanentUpgrades")
 save_for_encoding_dragonLevel = collect_data_for_strings(decoded_save, "dragonLevel")
 save_for_encoding_dragonAura = collect_data_for_strings(decoded_save, "dragonAura")
 save_for_encoding_dragonAura2 = collect_data_for_strings(decoded_save, "dragonAura2")
@@ -486,11 +530,18 @@ save_for_encoding_you = collect_data_for_encoding(decoded_save, "You")
 print(save_for_encoding_cursor, save_for_encoding_grandma)
 
 
-final_save_for_encode = ("2.052||" +  save_for_encoding_runStart + ";" +  save_for_encoding_time + ";" +  save_for_encoding_gameStart + ";" +  save_for_encoding_bakeryName + ";" +  save_for_encoding_seed + ";" +  save_for_encoding_youApperance1_7 +  "|" +  save_for_encoding_particles + ";" +  save_for_encoding_numbers + ";" +  save_for_encoding_autoSave + ";" +  save_for_encoding_autoUpdate + ";" +  save_for_encoding_milk + ";" +  save_for_encoding_fancy + ";" +  save_for_encoding_closingWarning + ";" +  save_for_encoding_cursors + ";" +  save_for_encoding_defocus + ";" +  save_for_encoding_shortNumbers + ";" +  save_for_encoding_fastNotes + ";" +  save_for_encoding_cookiewobble + ";" +  save_for_encoding_altFont + ";" +  save_for_encoding_cssFilters + ";" +  save_for_encoding_altCookieSound + ";" +  save_for_encoding_iconCrates + ";" +  save_for_encoding_backupWarning + ";" +  save_for_encoding_extraButtons + ";" +  save_for_encoding_lumpConfirmation + ";" +  save_for_encoding_customGrandmas + ";" +  save_for_encoding_sleepMode + ";" +  save_for_encoding_enableColudSaving + ";" +  save_for_encoding_sound + ";" +  save_for_encoding_scaryStaffOn + ";" +  save_for_encoding_fullscreen + ";" +  save_for_encoding_screenReader + ";" +  save_for_encoding_todo +  "|" +  save_for_encoding_cookies + ";" +  save_for_encoding_cookiesEarned + ";" +  save_for_encoding_cookieClicks + ";" +  save_for_encoding_gcClicksTotal + ";" +  save_for_encoding_cookiesHandmade + ";" +  save_for_encoding_gcMissed + ";" +  save_for_encoding_bgType + ";" +  save_for_encoding_milkType + ";" +  save_for_encoding_cookiesForfeitedByAscending + ";" +  save_for_encoding_elderWrath + ";" +  save_for_encoding_pledges + ";" +  save_for_encoding_pledgeT + ";" +  save_for_encoding_currentlyResearching + ";" +  save_for_encoding_researchTM + ";" +  save_for_encoding_resets + ";" +  save_for_encoding_gcClicks + ";" +  save_for_encoding_cookiesSucked + ";" +  save_for_encoding_wrinklersPopped + ";" +  save_for_encoding_santaLevel + ";" +  save_for_encoding_reindeerClicks + ";" +  save_for_encoding_seasonT + ";" +  save_for_encoding_seasonUses + ";" +  save_for_encoding_season + ";" +  save_for_encoding_cookiesContainedInWrinklers + ";" +  save_for_encoding_numberOfWrinklers + ";" +  save_for_encoding_prestigeLevel + ";" +  save_for_encoding_heavenlyChips + ";" +  save_for_encoding_heavenlyChipsSpent + ";" +  save_for_encoding_cookiesReset + ";" +  save_for_encoding_ascensionMode + ";" +  save_for_encoding_pernamentUpgrades1 + ";" +  save_for_encoding_pernamentUpgrades2 + ";" +  save_for_encoding_pernamentUpgrades3 + ";" +  save_for_encoding_pernamentUpgrades4 + ";" +  save_for_encoding_pernamentUpgrades5 + ";" +  save_for_encoding_dragonLevel + ";" +  save_for_encoding_dragonAura + ";" +  save_for_encoding_dragonAura2 + ";" +  save_for_encoding_goldenCookieChimeType + ";" +  save_for_encoding_volume + ";" +  save_for_encoding_numberOfShinyWrinklers + ";" +  save_for_encoding_sugarLumps + ";" +  save_for_encoding_totalSugarLumpsMade + ";" +  save_for_encoding_sugarLumpType + ";" +  save_for_encoding_upgradesInVault + ";" +  save_for_encoding_heralds + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_musicVolume + ";" +  save_for_encoding_cookiesSent + ";" +  save_for_encoding_cookiesRecived + ";" + "|" + save_for_encoding_cursor + ";" + save_for_encoding_grandma + ";" + save_for_encoding_farm + ";" + save_for_encoding_mine + ";" + save_for_encoding_factory + ";" + save_for_encoding_bank + ";" + save_for_encoding_temple + ";" + save_for_encoding_wizard_tower + ";" + save_for_encoding_shipment + ";" + save_for_encoding_alchemy_lab + ";" + save_for_encoding_portal + ";" + save_for_encoding_time_machine + ";" + save_for_encoding_antimatter_condenser + ";" + save_for_encoding_prism + ";" + save_for_encoding_chancemaker + ";" + save_for_encoding_fractal_engine + ";" + save_for_encoding_javascript_console + ";" + save_for_encoding_idleverse + ";" + save_for_encoding_cortex_baker + ";" + save_for_encoding_you + ";" + "|")
+final_save_for_encode = ("2.052||" +  save_for_encoding_runStart + ";" +  save_for_encoding_time + ";" +  save_for_encoding_gameStart + ";" +  save_for_encoding_bakeryName + ";" +  save_for_encoding_seed + ";" +  save_for_encoding_youApperance1_7 +  "|" +  save_for_encoding_particles +  save_for_encoding_numbers +  save_for_encoding_autoSave +  save_for_encoding_autoUpdate +  save_for_encoding_milk +  save_for_encoding_fancy +  save_for_encoding_closingWarning +  save_for_encoding_cursors +  save_for_encoding_defocus +  save_for_encoding_shortNumbers +  save_for_encoding_fastNotes +  save_for_encoding_cookiewobble +  save_for_encoding_altFont +  save_for_encoding_cssFilters +  save_for_encoding_altCookieSound +  save_for_encoding_iconCrates +  save_for_encoding_backupWarning +  save_for_encoding_extraButtons +  save_for_encoding_lumpConfirmation +  save_for_encoding_customGrandmas +  save_for_encoding_sleepMode +  save_for_encoding_enableColudSaving +  save_for_encoding_sound +  save_for_encoding_scaryStaffOn +  save_for_encoding_fullscreen +  save_for_encoding_screenReader +  save_for_encoding_todo +  "|" +  save_for_encoding_cookies + ";" +  save_for_encoding_cookiesEarned + ";" +  save_for_encoding_cookieClicks + ";" +  save_for_encoding_gcClicksTotal + ";" +  save_for_encoding_cookiesHandmade + ";" +  save_for_encoding_gcMissed + ";" +  save_for_encoding_bgType + ";" +  save_for_encoding_milkType + ";" +  save_for_encoding_cookiesForfeitedByAscending + ";" +  save_for_encoding_elderWrath + ";" +  save_for_encoding_pledges + ";" +  save_for_encoding_pledgeT + ";" +  save_for_encoding_currentlyResearching + ";" +  save_for_encoding_researchTM + ";" +  save_for_encoding_resets + ";" +  save_for_encoding_gcClicks + ";" +  save_for_encoding_cookiesSucked + ";" +  save_for_encoding_wrinklersPopped + ";" +  save_for_encoding_santaLevel + ";" +  save_for_encoding_reindeerClicks + ";" +  save_for_encoding_seasonT + ";" +  save_for_encoding_seasonUses + ";" +  save_for_encoding_season + ";" +  save_for_encoding_cookiesContainedInWrinklers + ";" +  save_for_encoding_numberOfWrinklers + ";" +  save_for_encoding_prestigeLevel + ";" +  save_for_encoding_heavenlyChips + ";" +  save_for_encoding_heavenlyChipsSpent + ";" +  save_for_encoding_cookiesReset + ";" +  save_for_encoding_ascensionMode + save_for_encoding_perm_upgrades + ";" +  save_for_encoding_dragonLevel + ";" +  save_for_encoding_dragonAura + ";" +  save_for_encoding_dragonAura2 + ";" +  save_for_encoding_goldenCookieChimeType + ";" +  save_for_encoding_volume + ";" +  save_for_encoding_numberOfShinyWrinklers + ";" +  save_for_encoding_sugarLumps + ";" +  save_for_encoding_totalSugarLumpsMade + ";" +  save_for_encoding_sugarLumpType + ";" +  save_for_encoding_upgradesInVault + ";" +  save_for_encoding_heralds + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_todo + ";" +  save_for_encoding_musicVolume + ";" +  save_for_encoding_cookiesSent + ";" +  save_for_encoding_cookiesRecived + ";" + "|" + save_for_encoding_cursor + ";" + save_for_encoding_grandma + ";" + save_for_encoding_farm + ";" + save_for_encoding_mine + ";" + save_for_encoding_factory + ";" + save_for_encoding_bank + ";" + save_for_encoding_temple + ";" + save_for_encoding_wizard_tower + ";" + save_for_encoding_shipment + ";" + save_for_encoding_alchemy_lab + ";" + save_for_encoding_portal + ";" + save_for_encoding_time_machine + ";" + save_for_encoding_antimatter_condenser + ";" + save_for_encoding_prism + ";" + save_for_encoding_chancemaker + ";" + save_for_encoding_fractal_engine + ";" + save_for_encoding_javascript_console + ";" + save_for_encoding_idleverse + ";" + save_for_encoding_cortex_baker + ";" + save_for_encoding_you + ";" + "|")
 print(final_save_for_encode)
 
 encoded_final_save = base64.b64encode(final_save_for_encode.encode('ascii')).decode('ascii')
 print("Encoded save for pc:", encoded_final_save)
+save_for_encoding_perm_upgrades = collect_data_for_list(decoded_save, "permanentUpgrades")
+
+
 
 print(" ")
 input("Press Enter to exit...")
+# to do :
+# buildnglevel buildingminigamedata buildingmuted
+# pernament upgrades function ## did it yay
+# upgrades (ask Violet for help) 

@@ -5,7 +5,7 @@ less that 5 minutes ago I overdose some tabs (won't say names cuz I don't y'all 
 
 I haven't said goodbye to my family and friends cuz I'm scared of ignorance and that I will not die I'm 16 and I probably suffer from some kind of depression I have never been to an professionalist cuz I'm scared of being called an liar.
 
-I want to say goodbye to everyone it's 0:37 noe
+I want to say goodbye to everyone it's 0:37 now 07.03.2024
 
 I going to sleep now 
 
